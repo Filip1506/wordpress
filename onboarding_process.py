@@ -10,10 +10,10 @@ CORS(app)
 
 # MySQL-forbindelsesoplysninger – juster efter behov
 db_config = {
-    "host": "localhost",
-    "user": "root",
-    "password": "Lasteliste",  # Opdater med dit MySQL-password
-    "database": "onboarding"
+    "host": "mysql30.unoeuro.com",  # Opdater med din Simply MySQL host
+    "user": "itco_dk",  # Dit MySQL-brugernavn fra Simply
+    "password": "BbawpD64fGFcdAEgrzRt",  # Dit MySQL-password
+    "database": "itco_dk_db_test"  # Navn på databasen i Simply
 }
 
 # ----------------------------------------------------
@@ -138,5 +138,5 @@ def onboard():
 
 if __name__ == "__main__":
     import os
-    port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 5001))  # Brug 5001 i stedet for 5000
     app.run(host="0.0.0.0", port=port)
