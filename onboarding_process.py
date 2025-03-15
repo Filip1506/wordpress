@@ -109,6 +109,24 @@ def onboard():
         "pdf_path": remote_pdf_path
     }), 200
 
+from flask import Flask, request, jsonify
+
+@app.route("/questions", methods=["GET"])
+def get_questions():
+    try:
+        questions_data = [
+            {"key": "business_name", "text": "What is your business name?"},
+            {"key": "vat_number", "text": "Enter your VAT number (V-tal)"},
+            {"key": "address", "text": "Enter your business address"},
+            {"key": "postal_code_city", "text": "Enter your postal code and city"},
+            {"key": "contact_person", "text": "Who is the contact person?"},
+            {"key": "phone_number", "text": "Enter phone number"},
+            {"key": "email", "text": "Enter email address"}
+        ]
+        return jsonify(questions_data), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 def upload_to_ftp(local_filepath, remote_filename):
     """Uploader PDF til Simply.com via FTP"""
     try:
